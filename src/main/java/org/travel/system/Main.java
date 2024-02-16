@@ -61,9 +61,9 @@ public class Main {
         System.out.println("3. Add activity to Destination");
         System.out.println("4. Create a Travel Package");
         System.out.println("5. Add destinations to Travel Package");
-        System.out.println("5. Create a Passenger");
-        System.out.println("6. Add Passenger to a Travel Package");
-        System.out.println("7. Exit");
+        System.out.println("6. Create a Passenger");
+        System.out.println("7. Add Passenger to a Travel Package");
+        System.out.println("8. Exit");
         System.out.print("Choose an option: ");
 
         int choice = scanner.nextInt();
@@ -77,7 +77,7 @@ public class Main {
 
         System.out.println("1. Activity Name : ");
         final String name = scanner.nextLine();
-        System.out.println("2. Activity Destination : ");
+        System.out.println("2. Activity Description : ");
         final String description = scanner.nextLine();
         System.out.println("3. Activity Cost : ");
         final double cost = scanner.nextDouble();
@@ -88,6 +88,7 @@ public class Main {
         final Activity newActivity = Activity.createActivity(name, description, cost, capacity);
 
         activities.add(newActivity);
+        System.out.println("\nActivity Added!");
     }
 
     private static void createDestination() {
@@ -97,6 +98,7 @@ public class Main {
         final Destination newDestination = Destination.createDestination(name);
 
         destinations.add(newDestination);
+        System.out.println("\nDestination Added!");
     }
 
     private static void addActivityToDestination() {
@@ -146,6 +148,7 @@ public class Main {
         final TravelPackage newPackage = new TravelPackage(packageName, capacity);
 
         travelPackages.add(newPackage);
+        System.out.println("\nTravel Package Added!");
     }
 
     private static void addDestinationToPackage() {
@@ -202,6 +205,7 @@ public class Main {
 
         final Passenger newPassenger = Passenger.createPassenger(type, name, number, balance);
         passengers.add(newPassenger);
+        System.out.println("\nNew Passenger Added!");
     }
 
     private static void addPassengerToPackage() {
@@ -215,7 +219,7 @@ public class Main {
             System.out.println((i + 1) + ". " + travelPackages.get(i).getName());
         }
         int packageChoice = scanner.nextInt() - 1;
-        scanner.nextLine(); // Consume newline
+        scanner.nextLine();
 
         if (packageChoice >= 0 && packageChoice < travelPackages.size()) {
             TravelPackage selectedPackage = travelPackages.get(packageChoice);
@@ -226,7 +230,7 @@ public class Main {
             }
             System.out.println("Select a passenger number to add to the package, or 0 to skip:");
             int passengerChoice = scanner.nextInt() - 1;
-            scanner.nextLine(); // Consume newline
+            scanner.nextLine();
 
             if (passengerChoice >= 0 && passengerChoice < passengers.size()) {
                 if (selectedPackage.addPassenger(passengers.get(passengerChoice))) {
